@@ -1,7 +1,8 @@
 let Plant = require("strict!./plant.js");
 
 // Create a tree based on the Plant prototype
-var Tree = Object.create(Plant);
+let Tree = Object.create(Plant);
+Tree.branches = null; // create branches key on Tree
 Tree.height = 12;
 
 // Testing I can call things from Plant
