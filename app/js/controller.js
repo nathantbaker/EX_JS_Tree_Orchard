@@ -1,7 +1,12 @@
 'use strict';
-require("../css/style.css");
-let Plant = require("strict!./plant.js");
-require("strict!./view.js");
+// Use Strict is added dynamically to other js modules using npm module 'strict-loader'
 
-let thing = Plant();
-console.log("thing:", thing);
+// Requires
+require("../css/style.css");
+require("strict!./view.js");
+let Tree = require("strict!./tree.js");
+
+// Testing I can call things from Tree
+let treeExample = Tree.testFunction();
+console.log("treeExample:", treeExample);
+console.log("tree:", Tree);

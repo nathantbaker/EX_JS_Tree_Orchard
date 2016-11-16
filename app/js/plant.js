@@ -1,5 +1,7 @@
-require("strict!./tree.js");
-
-let PlantFunction = () => "I'm a plant function.";
+// PlantFunction is the prototype of tree
+let PlantFunction = {
+  testFunction() {return `My number is ${this.a}`},
+  a: 1
+};
 
 module.exports = PlantFunction;
