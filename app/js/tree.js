@@ -7,12 +7,11 @@ Tree.height = 12;
 
 Tree.grow = function(num) {
   this.height += num; //increase height of tree based on argument
-
 };
 
 Tree.trim = function(num) {
   this.height -= num; //decrease height of tree based on argument
-
+  this.branches--;// decrease number of branches by 1
 };
 
 // Testing I can call things from Plant
