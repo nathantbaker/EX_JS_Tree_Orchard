@@ -1,29 +1,16 @@
 // PlantFunction is the prototype of tree
 let Plant = {
   height: 1,
-  getHeight() {
-    return `My height is ${this.height}`;
-  },
+  heightDelta: 0,
+  getHeight() { return `My height is ${this.height}`;},
   increaseHeight(num) {
-    console.log("Starting height:", this.height);
-    this.height += num;
-    console.log({
-      "You increased the height by": num,
-      "Your new height is": this.height
-    });
+    this.height += num; //increase height of tree
   },
   decreaseHeight(num) {
     console.log("Starting height:", this.height);
-    this.height -= num;
-    console.log({
-      "You decreased the height by": num,
-      "Your new height is": this.height
-    });
+    this.height -= num;  //decrease height of tree
   }
 };
-
-// Testing
-console.log("Plant object:", Plant);
 
 module.exports = Plant;
 
