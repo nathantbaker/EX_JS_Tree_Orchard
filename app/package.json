@@ -9,9 +9,14 @@
   "author": "Nathan T. Baker",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2",
     "css-loader": "^0.25.0",
-    "style-loader": "^0.13.1"
+    "jshint-loader": "^0.8.3",
+    "strict-loader": "^1.1.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "strict-loader": "^1.1.0"
   }
 }

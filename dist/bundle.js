@@ -44,8 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	console.log("controller.js loads");
+
 	__webpack_require__(1);
-	document.write(__webpack_require__(5));
+	__webpack_require__(5);
+	__webpack_require__(7);
+
+
 
 /***/ },
 /* 1 */
@@ -397,9 +404,29 @@
 
 /***/ },
 /* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(6);
+
+	console.log("plant.js loads");
+
+/***/ },
+/* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "Hello World!";
+	'use strict';
+
+	console.log("tree.js loads");
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	console.log("view.js loads");
 
 /***/ }
 /******/ ]);
