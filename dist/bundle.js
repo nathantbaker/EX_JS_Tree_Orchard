@@ -45,14 +45,16 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+	// Use Strict is added dynamically to other js modules using npm module 'strict-loader'
 
-	console.log("controller.js loads");
-
+	// Requires
 	__webpack_require__(1);
 	__webpack_require__(5);
-	__webpack_require__(7);
+	let Tree = __webpack_require__(6);
 
-
+	// Testing grow Tree
+	Tree.grow(5);
+	Tree.grow(12);
 
 /***/ },
 /* 1 */
@@ -404,21 +406,57 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(6);
-
-	console.log("plant.js loads");
-
-/***/ },
-/* 6 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	console.log("tree.js loads");
+	console.log("view.js loads");
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	let Plant = __webpack_require__(7);
+
+	// Create a tree based on the Plant prototype
+	let Tree = Object.create(Plant);
+	Tree.branches = 30; // create branches key on Tree
+	Tree.height = 12;
+
+	Tree.grow = function(num) {
+	  this.height += num; //increase height of tree based on argument
+	  this.heightDelta += num; //track change in height
+
+	  // If heightDelta is 10 or higher, increase branches by one and subtract 10 from heightDelta. Then check again.
+	  // for (let i = 10; i <= this.heightDelta; i -= 10) {
+	  //   Tree.branches++;
+	  //   this.heightDelta -= 10;
+	  // }
+
+	  console.log({
+	    "You increased the height by": num,
+	    "Your new height is": this.height,
+	    "Your change in height is": this.heightDelta,
+	    "Your number of branches is": this.branches
+
+	  });
+	};
+
+	Tree.trim = function(num) {
+	  this.height -= num; //decrease height of tree based on argument
+	  this.heightDelta -= num;  //track change in height
+	  this.branches--;// decrease number of branches by 1
+	  console.log({
+	    "You decreased the height by": num,
+	    "Your new height is": this.height,
+	    "Your change in height is": this.heightDelta,
+	    "Your number of branches is": this.branches
+	  });
+	};
+
+	module.exports = Tree;
 
 /***/ },
 /* 7 */
@@ -426,7 +464,27 @@
 
 	'use strict';
 
-	console.log("view.js loads");
+	// PlantFunction is the prototype of tree
+	let Plant = {
+	  height: 1,
+	  heightDelta: 0,
+	  getHeight() { return `My height is ${this.height}`;},
+	  increaseHeight(num) {
+	    this.height += num; //increase height of tree
+	  },
+	  decreaseHeight(num) {
+	    console.log("Starting height:", this.height);
+	    this.height -= num;  //decrease height of tree
+	  }
+	};
+
+	module.exports = Plant;
+
+	// The Plant prototype should have two methods on it: increaseHeight and decreaseHeight. Each method should accept an integer value as input.
+
+	// Plant.prototype.increaseHeight = function (growth) {
+
+	// }
 
 /***/ }
 /******/ ]);

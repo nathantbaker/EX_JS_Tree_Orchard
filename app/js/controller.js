@@ -8,5 +8,5 @@ let Tree = require("strict!./tree.js");
 
 // Testing grow Tree
 Tree.grow(5);
-Tree.trim(5);
-Tree.trim(5);
+Tree.grow(12);
+Tree.grow(24);
