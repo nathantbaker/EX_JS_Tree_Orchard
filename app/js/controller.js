@@ -6,7 +6,7 @@ require("../css/style.css");
 require("strict!./view.js");
 let Tree = require("strict!./tree.js");
 
-// Testing I can call things from Tree
-let treeExample = Tree.testFunction();
-console.log("treeExample:", treeExample);
-console.log("tree:", Tree);
+// Testing grow Tree
+Tree.grow(5);
+Tree.grow(12);
+Tree.grow(24);
