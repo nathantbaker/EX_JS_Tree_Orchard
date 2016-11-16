@@ -6,12 +6,12 @@ require("../css/style.css");
 require("strict!./view.js");
 let Tree = require("strict!./tree.js");
 
-// Testing increasing
+// Testing grow Tree
 console.log("Tree object:", Tree);
-Tree.increaseHeight(5);
-console.log("Tree object after increase:", Tree);
+Tree.grow(5);
+console.log("Tree object after grow:", Tree);
 
-// Testing decreasing
+// Testing trim Tree
 console.log("Tree object:", Tree);
-Tree.decreaseHeight(9);
-console.log("Tree object after increase:", Tree);
+Tree.trim(9);
+console.log("Tree object after trim:", Tree);
