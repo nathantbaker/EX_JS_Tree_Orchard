@@ -2,8 +2,8 @@ let Plant = require("strict!./plant.js");
 
 // Create a tree based on the Plant prototype
 let Tree = Object.create(Plant);
-Tree.branches = 30; // create branches key on Tree
-Tree.height = 12;
+Tree.branches = 0; // create branches key on Tree
+Tree.height = 0;
 Tree.name = null;
 
 Tree.grow = function(num) {
@@ -12,7 +12,7 @@ Tree.grow = function(num) {
 
 
   while (this.heightDelta >= 10) {  // Each time change in height is 10 or higher,
-    Tree.branches++;               //  add 1 branch,
+    this.branches++;               //  add 1 branch,
     this.heightDelta -= 10;       //   and subtract 10 from heightDelta.
   }
 

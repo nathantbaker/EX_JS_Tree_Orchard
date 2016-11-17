@@ -51,15 +51,28 @@
 	let Print = __webpack_require__(5);
 	let Tree = __webpack_require__(106);
 
-	// Testing grow Tree
-	Tree.PearTree.grow(5);
-	Tree.PearTree.grow(12);
-	Tree.OakTree.grow(24);
+	// Every second, increase the height the pear tree by some integer value and increase the height the oak tree by some integer value that is larger than what you used for the pear tree.
 
 	// Testing Tree Names
+	let intervalID = window.setInterval(grow, 1000);
+	let counter = 0;
 
+	//Show initail values
 	Print(Tree.PearTree);
 	Print(Tree.OakTree);
+
+	function grow() {
+
+	  Tree.PearTree.grow(5);      // grow pear tree by some number
+	  console.log("Tree.PearTree.height:", Tree.PearTree.height);
+	  Tree.OakTree.grow(10);    //  grow oak tree by 4
+	  Print(Tree.PearTree);    //   print new values
+	  Print(Tree.OakTree);
+
+	  counter++;
+	  if (counter >= 5) { window.clearInterval(intervalID);}
+	}
+
 
 /***/ },
 /* 1 */
@@ -422,7 +435,7 @@
 	let container = $("#container");
 
 	let Print = function(treeObject) {
-	  container.append(`${treeObject.name} is now ${treeObject.height}cm tall and has ${treeObject.branches} branches.<br>`);
+	  container.append(`<p>${treeObject.name} is now ${treeObject.height}cm tall and has ${treeObject.branches} branches.</p>`);
 	};
 
 	module.exports = Print;
@@ -12019,8 +12032,8 @@
 
 	// Create a tree based on the Plant prototype
 	let Tree = Object.create(Plant);
-	Tree.branches = 30; // create branches key on Tree
-	Tree.height = 12;
+	Tree.branches = 0; // create branches key on Tree
+	Tree.height = 0;
 	Tree.name = null;
 
 	Tree.grow = function(num) {
@@ -12029,7 +12042,7 @@
 
 
 	  while (this.heightDelta >= 10) {  // Each time change in height is 10 or higher,
-	    Tree.branches++;               //  add 1 branch,
+	    this.branches++;               //  add 1 branch,
 	    this.heightDelta -= 10;       //   and subtract 10 from heightDelta.
 	  }
 
@@ -12074,7 +12087,7 @@
 
 	// PlantFunction is the prototype of tree
 	let Plant = {
-	  height: 1,
+	  height: 0,
 	  name: null,
 	  heightDelta: 0, // tracks change in height
 	  getHeight() { return `My height is ${this.height}`;},
