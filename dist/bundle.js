@@ -48,13 +48,26 @@
 
 	// Requires
 	__webpack_require__(1);
-	__webpack_require__(5);
-	let Tree = __webpack_require__(106);
+	let Print = __webpack_require__(5),
+	    Tree = __webpack_require__(106),
+	    intervalID = window.setInterval(grow, 1000),
+	    growCounter = 0;
 
-	// Testing grow Tree
-	Tree.PearTree.grow(5);
-	Tree.PearTree.grow(12);
-	Tree.OakTree.grow(24);
+	//Show initail values
+	Print(Tree.PearTree, Tree.OakTree);
+
+	function grow() {
+
+	  Tree.PearTree.grow(5);      // grow pear tree by some number
+	  console.log("Tree.PearTree.height:", Tree.PearTree.height);
+	  Tree.OakTree.grow(10);    //  grow oak tree by 4
+	  Print(Tree.PearTree, Tree.OakTree);    //   print new values
+
+	  growCounter++;
+	  console.log("growCounter:", growCounter);
+	  if (growCounter >= 30) { window.clearInterval(intervalID);}
+	}
+
 
 /***/ },
 /* 1 */
@@ -416,15 +429,15 @@
 
 	let container = $("#container");
 
-	container.html("hi!!! !");
+	let Print = function(Pear, Oak) {
+	  container.append(`
+	    ${Pear.name} is now ${Pear.height}cm tall and has ${Pear.branches} branches.<br>
+	    ${Oak.name} is now ${Oak.height}cm tall and has ${Oak.branches} branches.<br>
+	    <br>
+	    `);
+	};
 
-	// let Print = function(treeObject) {
-
-	// };
-
-	// Print();
-
-	// module.exports = Print;
+	module.exports = Print;
 
 /***/ },
 /* 6 */
@@ -12018,17 +12031,29 @@
 
 	// Create a tree based on the Plant prototype
 	let Tree = Object.create(Plant);
-	Tree.branches = 30; // create branches key on Tree
-	Tree.height = 12;
+	Tree.branches = 0; // create branches key on Tree
+	Tree.height = 0;
+	Tree.name = null;
+	Tree.trimCounter = 0;
 
 	Tree.grow = function(num) {
 	  this.height += num;       // increase height of tree based on argument
 	  this.heightDelta += num; //  track change in height
+	  this.trimCounter++;
 
 
 	  while (this.heightDelta >= 10) {  // Each time change in height is 10 or higher,
-	    Tree.branches++;               //  add 1 branch,
+	    this.branches++;               //  add 1 branch,
 	    this.heightDelta -= 10;       //   and subtract 10 from heightDelta.
+	  }
+
+	    // Every tenth time the trees are grown, invoke the trim method. Pass one value to the method for the pear tree, and a larger value to the method on the oak tree.
+
+	  while (this.trimCounter >= 10) {
+	    PearTree.trim(2);
+	    OakTree.trim(4);
+	    // console.log("trimCounter", trimCounter);
+	    this.trimCounter -= 10;
 	  }
 
 	  console.log({
@@ -12036,7 +12061,6 @@
 	    "Your new height is": this.height,
 	    "Your change in height is": this.heightDelta,
 	    "Your number of branches is": this.branches
-
 	  });
 	};
 
@@ -12057,6 +12081,11 @@
 	let PearTree = Object.create(Tree),
 	    OakTree = Object.create(Tree);
 
+	console.log("PearTree:", PearTree);
+
+	PearTree.name = "Pear Tree",
+	OakTree.name = "Oak Tree";
+
 	module.exports = {PearTree, OakTree};
 
 /***/ },
@@ -12067,7 +12096,8 @@
 
 	// PlantFunction is the prototype of tree
 	let Plant = {
-	  height: 1,
+	  height: 0,
+	  name: null,
 	  heightDelta: 0, // tracks change in height
 	  getHeight() { return `My height is ${this.height}`;},
 	  increaseHeight(num) {
@@ -12080,12 +12110,6 @@
 	};
 
 	module.exports = Plant;
-
-	// The Plant prototype should have two methods on it: increaseHeight and decreaseHeight. Each method should accept an integer value as input.
-
-	// Plant.prototype.increaseHeight = function (growth) {
-
-	// }
 
 /***/ }
 /******/ ]);

@@ -1,15 +1,13 @@
-console.log("view.js loads");
-
 require('jquery');
 
 let container = $("#container");
 
-container.html("hi!!! !");
+let Print = function(Pear, Oak) {
+  container.append(`
+    ${Pear.name} is now ${Pear.height}cm tall and has ${Pear.branches} branches.<br>
+    ${Oak.name} is now ${Oak.height}cm tall and has ${Oak.branches} branches.<br>
+    <br>
+    `);
+};
 
-// let Print = function(treeObject) {
-
-// };
-
-// Print();
-
-// module.exports = Print;
+module.exports = Print;
