@@ -14,9 +14,3 @@ let Plant = {
 };
 
 module.exports = Plant;
-
-// The Plant prototype should have two methods on it: increaseHeight and decreaseHeight. Each method should accept an integer value as input.
-
-// Plant.prototype.increaseHeight = function (growth) {
-
-// }
