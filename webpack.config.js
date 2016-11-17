@@ -10,5 +10,10 @@ module.exports = {
     loaders: [
       { test: /\.css$/, loader: "style!css"}
     ]
+  },
+  resolve: {
+    alias: {
+      'jquery': '../node_modules/jquery/src/jquery.js'
+    }
   }
 };

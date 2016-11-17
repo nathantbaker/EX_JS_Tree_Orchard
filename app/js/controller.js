@@ -1,5 +1,4 @@
-'use strict';
-// Use Strict is added dynamically to other js modules using npm module 'strict-loader'
+'use strict'; // Use Strict is added dynamically to other js modules using npm module 'strict-loader'
 
 // Requires
 require("../css/style.css");
