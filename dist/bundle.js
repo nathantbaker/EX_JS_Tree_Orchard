@@ -55,7 +55,7 @@
 
 	// Testing Tree Names
 	let intervalID = window.setInterval(grow, 1000);
-	let counter = 0;
+	let growCounter = 0;
 
 	//Show initail values
 	Print(Tree.PearTree);
@@ -69,8 +69,9 @@
 	  Print(Tree.PearTree);    //   print new values
 	  Print(Tree.OakTree);
 
-	  counter++;
-	  if (counter >= 5) { window.clearInterval(intervalID);}
+	  growCounter++;
+	  console.log("growCounter:", growCounter);
+	  if (growCounter >= 30) { window.clearInterval(intervalID);}
 	}
 
 
