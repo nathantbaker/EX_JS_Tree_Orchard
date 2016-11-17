@@ -13,11 +13,9 @@ Print(Tree.PearTree, Tree.OakTree);
 function grow() {
 
   Tree.PearTree.grow(5);      // grow pear tree by some number
-  console.log("Tree.PearTree.height:", Tree.PearTree.height);
   Tree.OakTree.grow(10);    //  grow oak tree by 4
   Print(Tree.PearTree, Tree.OakTree);    //   print new values
 
   growCounter++;
-  console.log("growCounter:", growCounter);
   if (growCounter >= 30) { window.clearInterval(intervalID);}
 }

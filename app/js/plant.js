@@ -8,7 +8,6 @@ let Plant = {
     this.height += num; //increase height of tree
   },
   decreaseHeight(num) {
-    console.log("Starting height:", this.height);
     this.height -= num;  //decrease height of tree
   }
 };

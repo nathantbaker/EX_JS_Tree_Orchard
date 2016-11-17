@@ -1,5 +1,3 @@
-console.log("view.js loads");
-
 require('jquery');
 
 let container = $("#container");

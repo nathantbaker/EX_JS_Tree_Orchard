@@ -23,36 +23,19 @@ Tree.grow = function(num) {
   while (this.trimCounter >= 10) {
     PearTree.trim(2);
     OakTree.trim(4);
-    // console.log("trimCounter", trimCounter);
     this.trimCounter -= 10;
   }
-
-  console.log({
-    "You increased the height by": num,
-    "Your new height is": this.height,
-    "Your change in height is": this.heightDelta,
-    "Your number of branches is": this.branches
-  });
 };
 
 Tree.trim = function(num) {
   this.height -= num;       // decrease height of tree based on argument
   this.heightDelta -= num; //  track change in height
   this.branches--;        //   decrease number of branches by 1
-
-  console.log({
-    "You decreased the height by": num,
-    "Your new height is": this.height,
-    "Your change in height is": this.heightDelta,
-    "Your number of branches is": this.branches
-  });
 };
 
 // Create Pear and Oak trees using the tree prototype
 let PearTree = Object.create(Tree),
     OakTree = Object.create(Tree);
-
-console.log("PearTree:", PearTree);
 
 PearTree.name = "Pear Tree",
 OakTree.name = "Oak Tree";
