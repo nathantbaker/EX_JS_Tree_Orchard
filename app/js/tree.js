@@ -4,6 +4,7 @@ let Plant = require("strict!./plant.js");
 let Tree = Object.create(Plant);
 Tree.branches = 30; // create branches key on Tree
 Tree.height = 12;
+Tree.name = null;
 
 Tree.grow = function(num) {
   this.height += num;       // increase height of tree based on argument
@@ -40,5 +41,10 @@ Tree.trim = function(num) {
 // Create Pear and Oak trees using the tree prototype
 let PearTree = Object.create(Tree),
     OakTree = Object.create(Tree);
+
+console.log("PearTree:", PearTree);
+
+PearTree.name = "Pear Tree",
+OakTree.name = "Oak Tree";
 
 module.exports = {PearTree, OakTree};

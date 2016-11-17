@@ -48,13 +48,18 @@
 
 	// Requires
 	__webpack_require__(1);
-	__webpack_require__(5);
+	let Print = __webpack_require__(5);
 	let Tree = __webpack_require__(106);
 
 	// Testing grow Tree
 	Tree.PearTree.grow(5);
 	Tree.PearTree.grow(12);
 	Tree.OakTree.grow(24);
+
+	// Testing Tree Names
+
+	Print(Tree.PearTree);
+	Print(Tree.OakTree);
 
 /***/ },
 /* 1 */
@@ -416,15 +421,11 @@
 
 	let container = $("#container");
 
-	container.html("hi!!! !");
+	let Print = function(treeObject) {
+	  container.append(`${treeObject.name}<br>`);
+	};
 
-	// let Print = function(treeObject) {
-
-	// };
-
-	// Print();
-
-	// module.exports = Print;
+	module.exports = Print;
 
 /***/ },
 /* 6 */
@@ -12020,6 +12021,7 @@
 	let Tree = Object.create(Plant);
 	Tree.branches = 30; // create branches key on Tree
 	Tree.height = 12;
+	Tree.name = null;
 
 	Tree.grow = function(num) {
 	  this.height += num;       // increase height of tree based on argument
@@ -12057,6 +12059,11 @@
 	let PearTree = Object.create(Tree),
 	    OakTree = Object.create(Tree);
 
+	console.log("PearTree:", PearTree);
+
+	PearTree.name = "Pear Tree",
+	OakTree.name = "Oak Tree";
+
 	module.exports = {PearTree, OakTree};
 
 /***/ },
@@ -12068,6 +12075,7 @@
 	// PlantFunction is the prototype of tree
 	let Plant = {
 	  height: 1,
+	  name: null,
 	  heightDelta: 0, // tracks change in height
 	  getHeight() { return `My height is ${this.height}`;},
 	  increaseHeight(num) {

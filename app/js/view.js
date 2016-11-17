@@ -4,12 +4,8 @@ require('jquery');
 
 let container = $("#container");
 
-container.html("hi!!! !");
+let Print = function(treeObject) {
+  container.append(`${treeObject.name}<br>`);
+};
 
-// let Print = function(treeObject) {
-
-// };
-
-// Print();
-
-// module.exports = Print;
+module.exports = Print;
