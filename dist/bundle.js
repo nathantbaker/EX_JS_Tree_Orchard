@@ -48,26 +48,20 @@
 
 	// Requires
 	__webpack_require__(1);
-	let Print = __webpack_require__(5);
-	let Tree = __webpack_require__(106);
-
-	// Every second, increase the height the pear tree by some integer value and increase the height the oak tree by some integer value that is larger than what you used for the pear tree.
-
-	// Testing Tree Names
-	let intervalID = window.setInterval(grow, 1000);
-	let growCounter = 0;
+	let Print = __webpack_require__(5),
+	    Tree = __webpack_require__(106),
+	    intervalID = window.setInterval(grow, 1000),
+	    growCounter = 0;
 
 	//Show initail values
-	Print(Tree.PearTree);
-	Print(Tree.OakTree);
+	Print(Tree.PearTree, Tree.OakTree);
 
 	function grow() {
 
 	  Tree.PearTree.grow(5);      // grow pear tree by some number
 	  console.log("Tree.PearTree.height:", Tree.PearTree.height);
 	  Tree.OakTree.grow(10);    //  grow oak tree by 4
-	  Print(Tree.PearTree);    //   print new values
-	  Print(Tree.OakTree);
+	  Print(Tree.PearTree, Tree.OakTree);    //   print new values
 
 	  growCounter++;
 	  console.log("growCounter:", growCounter);
@@ -435,8 +429,12 @@
 
 	let container = $("#container");
 
-	let Print = function(treeObject) {
-	  container.append(`<p>${treeObject.name} is now ${treeObject.height}cm tall and has ${treeObject.branches} branches.</p>`);
+	let Print = function(Pear, Oak) {
+	  container.append(`
+	    ${Pear.name} is now ${Pear.height}cm tall and has ${Pear.branches} branches.<br>
+	    ${Oak.name} is now ${Oak.height}cm tall and has ${Oak.branches} branches.<br>
+	    <br>
+	    `);
 	};
 
 	module.exports = Print;
